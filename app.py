@@ -24,6 +24,22 @@ def home():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
+@app.route("/cocktail", methods=["POST"])
+def comment_post():
+    index_receive = request.form['index_give']
+    comment_receive = request.form['comment_give']
+    doc = {
+        'index': index_receive,
+        'comment': comment_receive
+    }
+    db.cocktail.insert_one(doc)
+    return jsonify({'msg': '저장완료 !'})
+
+@app.route("/cocktail", methods=["GET"])
+def comment_get():
+    index_receive = request.form['index_give']
+    comment = list(db.cocktail.find({'index': index_receive}, {'_id': False}))
+    return jsonify({'comment': comment})
 
 @app.route('/login')
 def login():
@@ -59,7 +75,7 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=5)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=1000)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 

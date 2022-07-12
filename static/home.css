@@ -71,3 +71,12 @@ header {
 .show {
   display: none;
 }
+
+.commentList {
+    width: 280px;
+    list-style: none;
+    padding: 0;
+    color: #7a7a7a;
+    display: none;
+
+}
