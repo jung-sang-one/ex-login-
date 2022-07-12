@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/home.css" />
+
+    <title>CocktailMore</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      $.ajax({
+        type: "get",
+        dataType: "json",
+        url: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass",
+        data: {},
+        success: function (result) {
+          let rows = result.drinks;
+          console.log(rows);
+          for (let i = 0; i < rows.length; i++) {
+            let ckname = rows[i].strDrink;
+            let img = rows[i].strDrinkThumb;
+            let html_temp = `  <div class="card">
+                <img src="${img}/preview" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="ckname card-title">${ckname}</h5>
+                  <input type="text">
+     
+                  <div class="show">ddd</div>
+                </div>
+              </div>`;
+            $(".card-group").append(html_temp);
+          }
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="/static/logo.png" />
+      </div>
+      <label>
+        <input
+          id="search"
+          class="search"
+          type="text"
+          onkeyup="filter()"
+          placeholder="검색어를 입력 해주세요."
+        />
+      </label>
+    </header>
+    <div class="card-group"></div>
+    <script src="/templates/home.js"></script>
+    <script>
+      function filter() {
+        let search = document.getElementById("search").value.toLowerCase();
+        console.log(search);
+        let list = document.getElementsByClassName("card");
+        console.log(list);
+        for (let i = 0; i < list.length; i++) {
+          let searchname = list[i];
+          if (searchname.innerText.toLowerCase().includes(search)) {
+            list[i].style.display = "block";
+          } else {
+            list[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
