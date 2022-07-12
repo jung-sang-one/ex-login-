@@ -1,6 +1,8 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  width: 100%;
+
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
@@ -73,10 +75,9 @@ header {
 }
 
 .commentList {
-    width: 280px;
-    list-style: none;
-    padding: 0;
-    color: #7a7a7a;
-    display: none;
-
+  width: 280px;
+  list-style: none;
+  padding: 0;
+  color: #7a7a7a;
+  display: none;
 }
