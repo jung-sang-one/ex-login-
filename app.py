@@ -37,8 +37,8 @@ def comment_post():
 
 @app.route("/cocktail", methods=["GET"])
 def comment_get():
-    index_receive = request.form['index_give']
-    comment = list(db.cocktail.find({'index': index_receive}, {'_id': False}))
+    comment = list(db.cocktail.find({}, {'_id': False}))
+    nick = list(db.cocktail.find({}, {'_id': False}))
     return jsonify({'comment': comment})
 
 @app.route('/login')

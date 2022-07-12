@@ -19,7 +19,7 @@ $.ajax({
                                             <button class="inputBtn" onclick="save_comment(${i})">입력</button>
                                             <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
                                         </div>
-                                        <ul class="commentList ${i}">
+                                        <ul class="commentList ${i}" id="commentList${i}">
                                             <li>김철수 : 짱짱 !</li>
                                             <li>박종철 : 맛있어요 !</li>
                                             <li>신윤섭 : 부드러워요 !</li>
@@ -29,31 +29,55 @@ $.ajax({
         }
     },
 });
+// $(document).ready(function () {
+//     comment_order();
+// });
+// const commentList = document.querySelector('#commentList1')
+// console.log(commentList.className)
+function comment_order() {
+
+}
+
 
 function save_comment(index) {
     let comment = $(`.commentBox${index}`).val();
-    $.ajax({
-        type: "POST",
-        url: "/cocktail",
-        data: {comment_give: comment, index_give: index},
-        success: function (response) {
-            alert(response["msg"])
-            window.location.reload()
-        }
-    });
+    if (comment === '') {
+        alert('댓글을 입력해 주세요!')
+        return
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/cocktail",
+            data: {comment_give: comment, index_give: index},
+            success: function (response) {
+                alert(response["msg"])
+                window.location.reload()
+            }
+        });
+    }
+
 }
 
 function spread(index) {
+    $(`.${index}`).empty()
     $.ajax({
         type: "get",
         url: "/cocktail",
-        data: {index_give: index},
-        success: function (response) {
-            console.log(response)
+        success: function (result) {
+            let rows = result['comment'];
+            rows.forEach((item) => {
+                let text = `<li>${item['comment']}</li>`
+                if (item['index'] == index) {
+                    $(`.${index}`).append(text);
+                }
+            })
+            // console.log(rows[0]['index']);
+            // console.log(rows['comment']);
+            // rows.forEach()
         },
     });
-    const id = document.querySelector(`#rightBtn${index}`)
 
+    const id = document.querySelector(`#rightBtn${index}`)
     if (id.className == `spreadBtn${index}`) {
         $(`.${index}`).show();
         id.setAttribute('class', `closeBtn${index}`)
