@@ -9,7 +9,7 @@ import jwt
 import datetime
 import hashlib
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.ke58o.mongodb.net/cluster0?retryWrites=true&w=majority',,tlsCAFile=certifi.where())
+client = MongoClient('mongodb+srv://test:sparta@cluster0.ke58o.mongodb.net/cluster0?retryWrites=true&w=majority',tlsCAFile=certifi.where())
 db = client.dbsparta_plus_week4
 
 SECRET_KEY = 'ASD'
