@@ -28,7 +28,9 @@ def home():
 def comment_post():
     index_receive = request.form['index_give']
     comment_receive = request.form['comment_give']
+    nick_receive = request.form['nick_give']
     doc = {
+        'nick': nick_receive,
         'index': index_receive,
         'comment': comment_receive
     }
@@ -38,7 +40,6 @@ def comment_post():
 @app.route("/cocktail", methods=["GET"])
 def comment_get():
     comment = list(db.cocktail.find({}, {'_id': False}))
-    nick = list(db.cocktail.find({}, {'_id': False}))
     return jsonify({'comment': comment})
 
 @app.route('/login')

@@ -29,18 +29,10 @@ $.ajax({
         }
     },
 });
-// $(document).ready(function () {
-//     comment_order();
-// });
-// const commentList = document.querySelector('#commentList1')
-// console.log(commentList.className)
-function comment_order() {
-
-}
-
 
 function save_comment(index) {
     let comment = $(`.commentBox${index}`).val();
+    let nick = $('.myNickName').text()
     if (comment === '') {
         alert('댓글을 입력해 주세요!')
         return
@@ -48,7 +40,7 @@ function save_comment(index) {
         $.ajax({
             type: "POST",
             url: "/cocktail",
-            data: {comment_give: comment, index_give: index},
+            data: {comment_give: comment, index_give: index, nick_give: nick},
             success: function (response) {
                 alert(response["msg"])
                 window.location.reload()
@@ -64,11 +56,13 @@ function spread(index) {
         type: "get",
         url: "/cocktail",
         success: function (result) {
+
             let rows = result['comment'];
+            console.log(rows);
             rows.forEach((item) => {
-                let text = `<li>${item['comment']}</li>`
+                let text = `<li>${item['nick']}: ${item['comment']}</li>`
                 if (item['index'] == index) {
-                    $(`.${index}`).append(text);
+                    $(`.${index}`).prepend(text);
                 }
             })
             // console.log(rows[0]['index']);
