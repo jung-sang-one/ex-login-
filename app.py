@@ -88,33 +88,54 @@ def api_login():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-# @app.route('/api/nick', methods=['GET'])
-# def api_valid():
-#     token_receive = request.cookies.get('mytoken')
-#     try:
-#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-#         print(payload)
-
-#         userinfo = db.user.find_one({'id': payload['id']}, {'_id': 0})
-#         return jsonify({'result': 'success', 'nickname': userinfo['nick']})
-#     except jwt.ExpiredSignatureError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
-#     except jwt.exceptions.DecodeError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
-
-
 @app.route('/review/<keyword>')
 def review(keyword):
   r = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")
   result = r.json()
   cockid = result
+  token_receive = request.cookies.get('mytoken')
+  payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+  user_info = db.user.find_one({"id": payload['id']})
   for i in cockid['drinks'] :
     print(cockid)
   if keyword == i['idDrink'] :
     return keyword
-  return render_template("review.html",word=keyword,result=cockid['drinks'])
+  return render_template("review.html",word=keyword,result=cockid['drinks'], nickname=user_info["nick"])
 
 
+@app.route('/register/check_dup', methods=['POST'])
+def check_dup():
+    id_receive = request.form['id_give']
+    exists = bool(db.user.find_one({"id": id_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+
+@app.route('/register/check_dup1', methods=['POST'])
+def check_dup1():
+    nick_receive = request.form['nick_give']
+    exists = bool(db.user.find_one({"nick": nick_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+@app.route('/user/check_dup2', methods=['POST'])
+def check_dup2():
+    nick_receive = request.form['nick_give']
+    exists = bool(db.user.find_one({"nick": nick_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+@app.route('/user/<nikname>')
+def user(nick):
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (nick == payload["id"])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False
+
+        user_info = db.user.find_one({"nick": nick}, {"_id": False})
+        return render_template('user.html', user_info=user_info, status=status)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("home"))
 
 
 if __name__ == '__main__':
