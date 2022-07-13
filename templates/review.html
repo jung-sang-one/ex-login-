@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>CocktailMore</title>
+    <title>Review</title>
     <script
       src="https://kit.fontawesome.com/827eb37611.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/home.css" />
+    <link rel="stylesheet" href="/static/review.css" />
   </head>
   <body>
     <header>
@@ -26,12 +25,23 @@
           onkeyup="filter()"
           placeholder="검색어를 입력 해주세요."
         />
-
-    </label>
-    <div class="myNickName">{{ nickname }}</div>
-</header>
-<div class="card-group"></div>
-</body>
-<script src="/static/home.js"></script>
-
+      </label>
+    </header>
+    {% for item in result %} {% if word == item['idDrink'] %}
+    <main>
+      <div class="review_name">{{ item['strDrink'] }}</div>
+      <div class="review_img">
+        <img src="{{ item['strDrinkThumb'] }}" />
+      </div>
+      <div class="reivew">
+        <ul class="review_ul">
+          <li class="review_li">{{ item['idDrink'] }}</li>
+        </ul>
+      </div>
+    </main>
+    {% endif %} {% endfor%}
+    <div class="review-group"></div>
+    <div class="card-group"></div>
+  </body>
+  <script src="/static/review.js"></script>
 </html>
