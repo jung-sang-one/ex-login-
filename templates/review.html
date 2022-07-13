@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Review</title>
     <script
-      src="https://kit.fontawesome.com/827eb37611.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/827eb37611.js"
+            crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/review.css" />
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <img src="../static/logo.png" />
-      </div>
-      <label>
-        <input
-          id="search"
-          class="search"
-          type="text"
-          onkeyup="filter()"
-          placeholder="검색어를 입력 해주세요."
-        />
-      </label>
-    </header>
-    {% for item in result %} {% if word == item['idDrink'] %}
+    <link rel="stylesheet" href="/static/hi.css"/>
+</head>
+<body>
+<header class="header">
+    <div class="header__left">
+        <a href="/">
+            <div class="logo">
+                <img src="../static/logo.png"/>
+            </div>
+        </a>
+        <label>
+            <input
+                    id="search"
+                    class="search"
+                    type="text"
+                    onkeyup="filter()"
+                    placeholder="검색어를 입력 해주세요."
+            />
+        </label>
+    </div>
+    <div class="header__right">
+        <div class="myNickName">{{ nickname }}</div>
+        <span>님 환영합니다 !</span>
+    </div>
+</header>
+{% for item in result %} {% if word == item['idDrink'] %}
     <main>
-      <div class="review_name">{{ item['strDrink'] }}</div>
-      <div class="review_img ckindex" data-idx="{{ item['idDrink'] }}">
-        <img src="{{ item['strDrinkThumb'] }}" />
-      </div>
-      <div class="reivew">
-        <ul class="review_ul">
-          <li class="review_li">{{ item['idDrink'] }}</li>
-        </ul>
-      </div>
+        <div class="review_name">{{ item['strDrink'] }}</div>
+        <div class="review_content">
+            <div class="review_img ckindex" data-idx="{{ item['idDrink'] }}">
+                <img src="{{ item['strDrinkThumb'] }}"/>
+            </div>
+            <div class="review-group"></div>
+        </div>
     </main>
-    {% endif %} {% endfor%}
-    <div class="review-group"></div>
-    <div class="card-group"></div>
-  </body>
-  <script src="/static/review.js"></script>
+{% endif %} {% endfor %}
+
+<div class="card-group"></div>
+</body>
+<script src="/static/review.js"></script>
 </html>
