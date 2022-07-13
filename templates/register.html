@@ -146,16 +146,15 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/register",
+                url: "/api/register",
                 data: {
                     id_give: id,
                     pw_give: pw,
-                    nick_give: nick
+                    nickname_give: nick
                 },
 
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            $.cookie('mytoken', response['token'], {path: '/'});
                             window.location.replace("/login")
                         } else {
                             alert(response['msg'])

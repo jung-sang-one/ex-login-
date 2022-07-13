@@ -88,21 +88,6 @@ def api_login():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-# @app.route('/api/nick', methods=['GET'])
-# def api_valid():
-#     token_receive = request.cookies.get('mytoken')
-#     try:
-#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-#         print(payload)
-
-#         userinfo = db.user.find_one({'id': payload['id']}, {'_id': 0})
-#         return jsonify({'result': 'success', 'nickname': userinfo['nick']})
-#     except jwt.ExpiredSignatureError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
-#     except jwt.exceptions.DecodeError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
-
-
 @app.route('/review/<keyword>')
 def review(keyword):
   r = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")
@@ -139,7 +124,6 @@ def check_dup2():
 
 @app.route('/user/<nikname>')
 def user(nick):
-    # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
