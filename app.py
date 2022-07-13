@@ -93,11 +93,14 @@ def review(keyword):
   r = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")
   result = r.json()
   cockid = result
+  token_receive = request.cookies.get('mytoken')
+  payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+  user_info = db.user.find_one({"id": payload['id']})
   for i in cockid['drinks'] :
     print(cockid)
   if keyword == i['idDrink'] :
     return keyword
-  return render_template("review.html",word=keyword,result=cockid['drinks'])
+  return render_template("review.html",word=keyword,result=cockid['drinks'], nickname=user_info["nick"])
 
 
 @app.route('/register/check_dup', methods=['POST'])
