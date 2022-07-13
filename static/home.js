@@ -5,7 +5,6 @@ $.ajax({
     data: {},
     success: function (result) {
         let rows = result.drinks;
-        // console.log(rows);
         for (let i = 0; i < rows.length; i++) {
             let ckname = rows[i].strDrink;
             let img = rows[i].strDrinkThumb;
@@ -15,14 +14,9 @@ $.ajax({
                                           <h5 class="card-title">${ckname}</h5>
                                         </div>
                                         <div class='bottomBox'>
-                                            <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
-                                            <button class="inputBtn" onclick="save_comment(${i})">입력</button>
                                             <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
                                         </div>
                                         <ul class="commentList ${i}" id="commentList${i}">
-                                            <li>김철수 : 짱짱 !</li>
-                                            <li>박종철 : 맛있어요 !</li>
-                                            <li>신윤섭 : 부드러워요 !</li>
                                         </ul>
                                      </div>`;
             $(".card-group").append(html_temp);
@@ -50,26 +44,39 @@ function save_comment(index) {
 
 }
 
+function moveDetailPage() {
+    window.location.href = 'https://www.google.com/'
+}
+
 function spread(index) {
+    let commentArea = `<input type="text" class="commentBox${index}" placeholder="댓글을 입력하세요 !">
+                       <button class="inputBtn" onclick="save_comment(${index})">입력</button>`
+    let moreCommentBtn = `<li><button class='moreCommentBtn' onclick='moveDetailPage()'><i class="fa-solid fa-ellipsis"></i></button></li>`
     $(`.${index}`).empty()
+
+    $(`.${index}`).append(commentArea)
     $.ajax({
         type: "get",
         url: "/cocktail",
         success: function (result) {
-
+            let reviewList = [];
             let rows = result['comment'];
             console.log(rows);
             rows.forEach((item) => {
                 let text = `<li>${item['nick']}: ${item['comment']}</li>`
                 if (item['index'] == index) {
-                    $(`.${index}`).prepend(text);
+                    reviewList.push(text);
                 }
             })
+            let cuReview = reviewList.slice(-5).reverse();
+            $(`.${index}`).append(cuReview);
+            $(`.${index}`).append(moreCommentBtn)
             // console.log(rows[0]['index']);
             // console.log(rows['comment']);
             // rows.forEach()
         },
     });
+
 
     const id = document.querySelector(`#rightBtn${index}`)
     if (id.className == `spreadBtn${index}`) {
