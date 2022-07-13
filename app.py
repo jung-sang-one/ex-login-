@@ -115,6 +115,40 @@ def review(keyword):
   return render_template("review.html",word=keyword,result=cockid['drinks'])
 
 
+@app.route('/register/check_dup', methods=['POST'])
+def check_dup():
+    id_receive = request.form['id_give']
+    exists = bool(db.user.find_one({"id": id_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+
+@app.route('/register/check_dup1', methods=['POST'])
+def check_dup1():
+    nick_receive = request.form['nick_give']
+    exists = bool(db.user.find_one({"nick": nick_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+@app.route('/user/check_dup2', methods=['POST'])
+def check_dup2():
+    nick_receive = request.form['nick_give']
+    exists = bool(db.user.find_one({"nick": nick_receive}))
+    # print(value_receive, type_receive, exists)
+    return jsonify({'result': 'success', 'exists': exists})
+
+@app.route('/user/<nikname>')
+def user(nick):
+    # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
+    token_receive = request.cookies.get('mytoken')
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        status = (nick == payload["id"])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False
+
+        user_info = db.user.find_one({"nick": nick}, {"_id": False})
+        return render_template('user.html', user_info=user_info, status=status)
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+        return redirect(url_for("home"))
 
 
 if __name__ == '__main__':
