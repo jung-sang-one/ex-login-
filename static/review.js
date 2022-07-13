@@ -26,14 +26,17 @@ $.ajax({
                                           <h5 class="card-title">${ckname}</h5>
                                         </div>
                                         </div>`;
-      let review_temp = `  <div class='bottomBox'>
+
+      let review_temp = `           <div>
+                                      <ul class="commentList ${i} review_list" id="commentList${i}">
+                                      </ul>
+                                    </div>
+                                    <div class='bottomBox'>
                                         <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
                                         <button class="inputBtn" onclick="save_comment(${i})">입력</button>
                                         <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">보기</i></button>            
                                     </div>
-                                    <ul class="commentList ${i}" id="commentList${i}">
-                                    </ul>
-                                  </div>`;
+                                  `;
       $(".card-group").append(html_temp);
       if (`${ckname}` === $review_name.innerText) {
         $(".review-group").append(review_temp);
@@ -55,7 +58,7 @@ $.ajax({
           }
         }
         if (parseInt(commentrows[i]["index"]) == uniteCheck.index) {
-          $(".review-group").append(text);
+          $(".review_list").append(text);
         }
       }
     },
