@@ -21,9 +21,7 @@ $descending.addEventListener("click", (e) => {
                                               <h5 class="card-title">${ckname}</h5>
                                             </div>
                                             <div class='bottomBox'>
-                                                <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
-                                                <button class="inputBtn" onclick="save_comment(${i})">입력</button>
-                                                <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
+                                                <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰보기</button>
                                             </div>
                                             <ul class="commentList ${i}" id="commentList${i}">
                                             </ul>
@@ -52,14 +50,9 @@ $descending.addEventListener("click", (e) => {
                                               <h5 class="card-title">${ckname}</h5>
                                             </div>
                                             <div class='bottomBox'>
-                                                <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
-                                                <button class="inputBtn" onclick="save_comment(${i})">입력</button>
-                                                <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
+                                                <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰보기</button>
                                             </div>
                                             <ul class="commentList ${i}" id="commentList${i}">
-                                                <li>김철수 : 짱짱 !</li>
-                                                <li>박종철 : 맛있어요 !</li>
-                                                <li>신윤섭 : 부드러워요 !</li>
                                             </ul>
                                          </div>`;
           $(".card-group").append(html_temp);

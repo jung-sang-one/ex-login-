@@ -27,16 +27,24 @@ $.ajax({
                                         </div>
                                         </div>`;
 
+
+
+
       let review_temp = `           <div>
                                       <ul class="commentList ${i} review_list" id="commentList${i}">
                                       </ul>
                                     </div>
+
                                     <div class='bottomBox'>
                                         <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
                                         <button class="inputBtn" onclick="save_comment(${i})">입력</button>
-                                        <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">보기</i></button>            
+                                        <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">보기</i></button>            -->
                                     </div>
+
+
+
                                   `;
+
       $(".card-group").append(html_temp);
       if (`${ckname}` === $review_name.innerText) {
         $(".review-group").append(review_temp);
