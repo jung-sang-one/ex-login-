@@ -32,6 +32,12 @@ header {
   margin-left: 160px;
 }
 
+.banner img {
+  margin-top: 20px;
+  width: 80%;
+  height: 150px;
+}
+
 .card-group {
   display: flex;
   flex-wrap: wrap;
@@ -49,6 +55,22 @@ header {
 .card-title {
   margin: 20px 0px;
   text-align: center;
+}
+
+.show {
+  position: absolute;
+  transform: translateY(-101%);
+  transition: transform 0.5s ease-in-out;
+  border-radius: 10px;
+  line-height: 1.5;
+  z-index: 1;
+}
+.card-body:hover .show {
+  transform: translateY(0);
+}
+
+.show {
+  display: none;
 }
 
 .commentList {

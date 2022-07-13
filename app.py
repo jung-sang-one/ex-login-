@@ -8,6 +8,7 @@ import certifi
 import jwt
 import datetime
 import hashlib
+import requests
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.ke58o.mongodb.net/cluster0?retryWrites=true&w=majority',tlsCAFile=certifi.where())
 db = client.dbsparta_plus_week4
@@ -30,7 +31,9 @@ def home():
 def comment_post():
     index_receive = request.form['index_give']
     comment_receive = request.form['comment_give']
+    nick_receive = request.form['nick_give']
     doc = {
+        'nick': nick_receive,
         'index': index_receive,
         'comment': comment_receive
     }
@@ -40,7 +43,6 @@ def comment_post():
 @app.route("/cocktail", methods=["GET"])
 def comment_get():
     comment = list(db.cocktail.find({}, {'_id': False}))
-    nick = list(db.cocktail.find({}, {'_id': False}))
     return jsonify({'comment': comment})
 
 @app.route('/login')
@@ -101,6 +103,30 @@ def api_valid():
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
     except jwt.exceptions.DecodeError:
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
+
+
+@app.route('/review/<keyword>')
+def review(keyword):
+  r = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")
+  result = r.json()
+  cockid = result['drinks']
+  for i in cockid :
+    print(i['idDrink'])
+  if keyword == i['idDrink'] :
+    return keyword
+  return render_template("review.html",word=keyword,result=cockid)
+
+@app.route('/')
+def connet(keyword):
+  r = requests.get(f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass")
+  result = r.json()
+  cockid = result['drinks']
+  for i in cockid :
+    print(i['idDrink'])
+  if keyword == i['idDrink'] :
+    return keyword
+  return render_template("index.html",word=keyword)
+
 
 
 if __name__ == '__main__':
