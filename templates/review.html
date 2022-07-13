@@ -30,7 +30,7 @@
     {% for item in result %} {% if word == item['idDrink'] %}
     <main>
       <div class="review_name">{{ item['strDrink'] }}</div>
-      <div class="review_img">
+      <div class="review_img ckindex" data-idx="{{ item['idDrink'] }}">
         <img src="{{ item['strDrinkThumb'] }}" />
       </div>
       <div class="reivew">

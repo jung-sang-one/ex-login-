@@ -77,6 +77,11 @@ $.ajax({
   data: {},
   success: function (result) {
     let rows = result.drinks;
+    console.log(rows);
+    rows[0].index = 0;
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].index = rows[0].index + i;
+    }
     for (let i = 0; i < rows.length; i++) {
       let ckname = rows[i].strDrink;
       let img = rows[i].strDrinkThumb;
@@ -88,7 +93,7 @@ $.ajax({
                                           <h5 class="card-title">${ckname}</h5>
                                         </div>
                                         <div class='bottomBox'>
-                                            <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
+                                            <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰 보기</button>
                                         </div>
                                         <ul class="commentList ${i}" id="commentList${i}">
                                         </ul>
