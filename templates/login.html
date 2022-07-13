@@ -4,6 +4,8 @@
 
         <!-- Webpage Title -->
         <title>Hello, world!</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -28,7 +30,7 @@
             function login() {
                 $.ajax({
                     type: "POST",
-                    url: "/api/login",
+                    url: "/login",
                     data: {id_give: $('#userid').val(), pw_give: $('#userpw').val()},
                     success: function (response) {
                         if (response['result'] == 'success') {
