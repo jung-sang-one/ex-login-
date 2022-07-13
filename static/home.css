@@ -44,6 +44,8 @@ header {
   margin-top: 100px;
   box-shadow: 5px 5px 5px 5px gray;
   border-radius: 5px;
+  width: 200px;
+  height: 281px;
 }
 
 .card-title {
@@ -52,8 +54,16 @@ header {
 }
 
 .commentList {
-  width: 280px;
+  width: 100%;
   list-style: none;
   padding: 0;
   color: #7a7a7a;
+}
+
+.bottomBox button {
+  margin-left: 120px;
+  width: 80px;
+  border: 0;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
