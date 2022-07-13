@@ -81,12 +81,13 @@ $.ajax({
   data: {},
   success: function (result) {
     let rows = result.drinks;
-    console.log(rows);
     for (let i = 0; i < rows.length; i++) {
       let ckname = rows[i].strDrink;
       let img = rows[i].strDrinkThumb;
       let html_temp = `<div class="card">
-                                        <img src="${img}/preview" class="card-img-top" alt="...">
+                                        <a href="/review/${rows[i].idDrink}">
+                                        <img src="${img}/preview" class="card-img-top">
+                                        </a>
                                         <div class="card-body">
                                           <h5 class="card-title">${ckname}</h5>
                                         </div>
@@ -96,9 +97,7 @@ $.ajax({
                                             <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}"><i class="fa-solid fa-arrow-down"></i></button>
                                         </div>
                                         <ul class="commentList ${i}" id="commentList${i}">
-                                            <li>김철수 : 짱짱 !</li>
-                                            <li>박종철 : 맛있어요 !</li>
-                                            <li>신윤섭 : 부드러워요 !</li>
+                                            
                                         </ul>
                                      </div>`;
       $(".card-group").append(html_temp);
@@ -155,9 +154,9 @@ function spread(index) {
 
 function filter() {
   let search = document.getElementById("search").value.toLowerCase();
-  console.log(search);
+  // console.log(search);
   let list = document.getElementsByClassName("card");
-  console.log(list);
+  // console.log(list);
   for (let i = 0; i < list.length; i++) {
     let searchname = list[i];
     if (searchname.innerText.toLowerCase().includes(search)) {
