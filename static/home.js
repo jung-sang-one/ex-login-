@@ -18,6 +18,7 @@ $descending.addEventListener("click", (e) => {
           let html_temp = `<div class="card">
                                             <a href="/review/${rows[i].idDrink}" >
                                             <img src="${img}/preview" class="card-img-top" alt="...">
+                                            </a>
                                             <div class="card-body">
                                               <h5 class="card-title">${ckname}</h5>
                                             </div>
@@ -50,6 +51,7 @@ $descending.addEventListener("click", (e) => {
           let html_temp = `<div class="card">
                                             <a href="/review/${rows[i].idDrink}">
                                             <img src="${img}/preview" class="card-img-top" alt="...">
+                                            </a>
                                             <div class="card-body">
                                               <h5 class="card-title">${ckname}</h5>
                                             </div>
