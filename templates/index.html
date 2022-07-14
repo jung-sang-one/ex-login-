@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>CocktailMore</title>
     <script
-            src="https://kit.fontawesome.com/827eb37611.js"
-            crossorigin="anonymous"
+      src="https://kit.fontawesome.com/827eb37611.js"
+      crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/hello.css"/>
-</head>
-<body>
-<header class="header">
-    <div class="header__left">
-        <a href="/">
-            <div class="logo">
-                <img src="../static/logo.png"/>
-            </div>
+    <link rel="stylesheet" href="/static/home.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__left">
+        <div class="logo">
+          <img src="../static/logo.png" />
+          <a href="/">
+          </div>
         </a>
-        <label>
-            <input
-                    id="search"
-                    class="search"
-                    type="text"
-                    onkeyup="filter()"
-                    placeholder="검색어를 입력 해주세요."
-            />
-        </label>
+        <div>
+          <input
+            id="search"
+            class="search"
+            type="text"
+            onkeyup="filter()"
+            placeholder="검색어를 입력 해주세요."
+          />
+        </div>
+      </div>
+      <div class="header__right">
+        <div class="myNickName">{{ nickname }}님 환영합니다 !</div>
+      </div>
+    </header>
+    <div class="sidebox">
+      <button class="descending">오름차순</button>
     </div>
-    <div class="header__right">
-        <div class="myNickName">{{ nickname }}</div>
-        <span>님 환영합니다 !</span>
-    </div>
-</header>
-<div class="sidebox">
-    <button class="descending">오름차순</button>
-</div>
-<div class="card-group"></div>
-</body>
-<script src="/static/home.js"></script>
+    <div class="card-group"></div>
+  </body>
+  <script src="/static/home.js"></script>
 </html>

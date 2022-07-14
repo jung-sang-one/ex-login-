@@ -23,8 +23,10 @@ $descending.addEventListener("click", (e) => {
                                             <div class='bottomBox'>
                                                 <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰보기</button>
                                             </div>
+                                            <div class="commentbox">
                                             <ul class="commentList ${i}" id="commentList${i}">
                                             </ul>
+                                            </div>
                                          </div>`;
           $(".card-group").prepend(html_temp);
         }
@@ -52,8 +54,10 @@ $descending.addEventListener("click", (e) => {
                                             <div class='bottomBox'>
                                                 <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰보기</button>
                                             </div>
+                                            <div class="commentbox">
                                             <ul class="commentList ${i}" id="commentList${i}">
                                             </ul>
+                                            </div>
                                          </div>`;
           $(".card-group").append(html_temp);
         }
@@ -88,8 +92,10 @@ $.ajax({
                                         <div class='bottomBox'>
                                             <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">리뷰 보기</button>
                                         </div>
+                                        <div class="commentbox">
                                         <ul class="commentList ${i}" id="commentList${i}">
                                         </ul>
+                                        </div>
                                      </div>`;
       $(".card-group").append(html_temp);
     }
@@ -121,7 +127,6 @@ function moveDetailPage() {
 function spread(index) {
   let commentArea = `<input type="text" class="commentBox${index}" placeholder="댓글을 입력하세요 !">
                      <button class="inputBtn" onclick="save_comment(${index})">입력</button>`;
-  let moreCommentBtn = `<li><button class='moreCommentBtn' onclick='moveDetailPage()'><i class="fa-solid fa-ellipsis"></i></button></li>`;
   $(`.${index}`).empty();
 
   $(`.${index}`).append(commentArea);

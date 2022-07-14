@@ -1,29 +1,47 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
 }
 
 header {
   width: 100%;
   height: 100px;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.header__left {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  padding-left: 100px;
 }
 
+.header__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  padding-right: 300px;
+}
 .search {
-  width: 625px;
-  height: 38px;
+  width: 500px;
   background-color: #f2f2f2;
   padding: 0px 18px;
   font-size: 14px;
   border-radius: 5px;
   line-height: 38px;
   border: 0;
-  position: absolute;
   left: 302px;
-  top: 30px;
+  top: 40px;
+}
+.logo {
+  display: inline;
 }
 
 .logo img {
@@ -40,12 +58,12 @@ header {
 }
 
 .card {
-  margin: 0px 40px;
-  margin-top: 100px;
+  margin: 60px 40px;
   box-shadow: 5px 5px 5px 5px gray;
   border-radius: 5px;
   width: 200px;
   height: 281px;
+  margin-bottom: 100px;
 }
 
 .card-title {
@@ -65,5 +83,22 @@ header {
   width: 80px;
   border: 0;
   background-color: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(227, 25, 74, 0.84);
+}
+.sidebox {
+  position: relative;
+  display: inline;
+}
+
+.descending {
+  position: absolute;
+  left: 1200px;
+  width: 80px;
+  height: 30px;
+  background-color: rgba(227, 25, 74, 0.84);
+  border: 0;
+  border-radius: 5px;
+}
+.descending:hover {
+  transform: scale(1.1);
 }

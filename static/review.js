@@ -18,7 +18,7 @@ $.ajax({
       rows[i].index = rows[0].index + i;
       let ckname = rows[i].strDrink;
       let img = rows[i].strDrinkThumb;
-      let html_temp = `<div class="card">
+      let html_temp = `               <div class="card">
                                         <a href="/review/${rows[i].idDrink}">
                                         <img src="${img}/preview" class="card-img-top">
                                         </a>
@@ -26,25 +26,16 @@ $.ajax({
                                           <h5 class="card-title">${ckname}</h5>
                                         </div>
                                         </div>`;
-
-
-
-
       let review_temp = `           <div>
                                       <ul class="commentList ${i} review_list" id="commentList${i}">
                                       </ul>
                                     </div>
-
-                                    <div class='bottomBox'>
+                                    <form class='bottomBox'>
                                         <input type="text" class="commentBox${i}" placeholder="댓글을 입력하세요 !">
                                         <button class="inputBtn" onclick="save_comment(${i})">입력</button>
-                                        <button class="spreadBtn${i}" onclick="spread(${i})" id="rightBtn${i}">보기</i></button>            -->
-                                    </div>
-
-
-
+                                             
+                                    </form>
                                   `;
-
       $(".card-group").append(html_temp);
       if (`${ckname}` === $review_name.innerText) {
         $(".review-group").append(review_temp);
@@ -59,7 +50,7 @@ $.ajax({
       console.log(rows);
       let commentrows = result["comment"];
       for (let i = 0; i < commentrows.length; i++) {
-        let text = `<li>${commentrows[i]["nick"]} : ${commentrows[i]["comment"]}</li>`;
+        let text = `<li class="post_list">${commentrows[i]["nick"]} : ${commentrows[i]["comment"]}</li>`;
         for (let i = 0; i < rows.length; i++) {
           if (rows[i].idDrink == clientData) {
             uniteCheck = rows[i];

@@ -1,41 +1,57 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
 }
 
 header {
   width: 100%;
   height: 100px;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
 }
 
+.header__left {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  padding-left: 100px;
+}
+
+.header__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  padding-right: 300px;
+}
+.myNickName {
+  display: none;
+}
 .search {
-  width: 625px;
-  height: 38px;
+  width: 500px;
   background-color: #f2f2f2;
   padding: 0px 18px;
   font-size: 14px;
   border-radius: 5px;
   line-height: 38px;
   border: 0;
-  position: absolute;
   left: 302px;
-  top: 30px;
+  top: 40px;
+}
+.logo {
+  display: inline;
 }
 
 .logo img {
   width: 156px;
   height: 120px;
   margin-left: 160px;
-}
-
-.banner img {
-  margin-top: 20px;
-  width: 80%;
-  height: 150px;
 }
 
 .card-group {
@@ -47,9 +63,11 @@ header {
 
 .card {
   margin: 0px 40px;
-  margin-top: 100px;
   box-shadow: 5px 5px 5px 5px gray;
   border-radius: 5px;
+  width: 200px;
+  height: 281px;
+  margin-bottom: 100px;
 }
 
 .card-title {
@@ -57,25 +75,65 @@ header {
   text-align: center;
 }
 
-.show {
-  position: absolute;
-  transform: translateY(-101%);
-  transition: transform 0.5s ease-in-out;
-  border-radius: 10px;
-  line-height: 1.5;
-  z-index: 1;
-}
-.card-body:hover .show {
-  transform: translateY(0);
+.review_name {
+  text-align: center;
+  font-size: 28px;
+  color: rgba(227, 25, 74, 0.84);
+  margin-bottom: 16px;
 }
 
-.show {
-  display: none;
+.review_content {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.review_img {
+  margin-left: 40px;
+}
+
+.review_img img {
+  width: 400px;
+  height: 400px;
+}
+
+.review_group {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+  padding-left: 30px;
 }
 
 .commentList {
-  width: 280px;
+  height: inherit;
+  overflow: auto;
   list-style: none;
-  padding: 0;
-  color: #7a7a7a;
+  border-bottom: rgba(0, 0, 0, 0.3);
+}
+.post_list {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 0px;
+}
+
+.bottomBox {
+  position: absolute;
+  bottom: 180px;
+  left: 480px;
+}
+.bottomBox input {
+  width: 500px;
+  height: 20px;
+  padding-left: 10px;
+  border-radius: 4px;
+}
+
+.bottomBox button {
+  height: 26px;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: rgba(227, 25, 74, 0.8);
+  border-radius: 5px;
+  border: 0;
 }
