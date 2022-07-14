@@ -16,6 +16,7 @@ $descending.addEventListener("click", (e) => {
           let ckname = rows[i].strDrink;
           let img = rows[i].strDrinkThumb;
           let html_temp = `<div class="card">
+                                            <a href="/review/${rows[i].idDrink}" >
                                             <img src="${img}/preview" class="card-img-top" alt="...">
                                             <div class="card-body">
                                               <h5 class="card-title">${ckname}</h5>
@@ -47,6 +48,7 @@ $descending.addEventListener("click", (e) => {
           let ckname = rows[i].strDrink;
           let img = rows[i].strDrinkThumb;
           let html_temp = `<div class="card">
+                                            <a href="/review/${rows[i].idDrink}">
                                             <img src="${img}/preview" class="card-img-top" alt="...">
                                             <div class="card-body">
                                               <h5 class="card-title">${ckname}</h5>
