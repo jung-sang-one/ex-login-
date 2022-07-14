@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-top: 200px;
+}
+
+#loginBtn {
+    width: 100%;
+}
+
+#userid {
+    width: 100%;
+}
+
+.container > *{
+    width: 600px;
+    margin: auto;
+}
+
+#loginBtn {
+    background-color: rgba(227, 25, 74, 0.6);
+    height: 50px;
+}
+
+#signUpBtn {
+    height: 30px;
+    color: #9d9d9d;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+.title {
+    color: rgba(227, 25, 74, 0.67);
+    font-size: 70px;
+    margin-bottom: 20px;
+}
