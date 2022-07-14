@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:title" content="Cocktail Moa"/>
+    <meta property="og:description" content="리뷰 한 마디 남기고 가세요 !"/>
+    <meta property="og:image"
+          content="/static/logo.png"/>
+    <!-- 제이쿼리 쿠키 스크립트 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-    <title>CocktailMore</title>
+    <link
+            rel="shortcut icon"
+            href="/static/logo.png"
+            type="image/x-icon"
+    />
+    <title>Cocktail Moa</title>
     <script
-      src="https://kit.fontawesome.com/827eb37611.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/827eb37611.js"
+            crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/static/home.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header__left">
+{#    로그아웃 $.removeCookies is not a function 일 때 이거 체크#}
+{#    <script src="https://code.jquery.com/jquery-latest.min.js"></script>#}
+    <link rel="stylesheet" href="/static/home.css"/>
+    <script>
+        function logout() {
+            alert('로그아웃 되었습니다.')
+            window.location.href = '/login';
+            $.removeCookie('mytoken', {path: '/'});
+        }
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="header__left">
         <div class="logo">
-          <img src="../static/logo.png" />
-          <a href="/">
-          </div>
+            <img src="../static/logo.png"/>
+            <a href="/">
+        </div>
         </a>
         <div>
-          <input
-            id="search"
-            class="search"
-            type="text"
-            onkeyup="filter()"
-            placeholder="검색어를 입력 해주세요."
-          />
+            <input
+                    id="search"
+                    class="search"
+                    type="text"
+                    onkeyup="filter()"
+                    placeholder="검색어를 입력 해주세요."
+            />
         </div>
-      </div>
-      <div class="header__right">
-        <div class="myNickName">{{ nickname }}님 환영합니다 !</div>
-      </div>
-    </header>
-    <div class="sidebox">
-      <button class="descending">오름차순</button>
     </div>
-    <div class="card-group"></div>
-  </body>
-  <script src="/static/home.js"></script>
+    <div class="header__right">
+        <div class="myNickName">{{ nickname }}님 환영합니다 !
+            <button onclick="logout()">로그아웃</button>
+        </div>
+    </div>
+</header>
+<div class="sidebox">
+    <button class="descending">오름차순</button>
+</div>
+<div class="card-group"></div>
+</body>
+<script src="/static/home.js"></script>
 </html>

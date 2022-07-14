@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <!-- Webpage Title -->
-    <title>Hello, world!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <title>Cocktail Moa</title>
+    <meta property="og:title" content="Cocktail Moa"/>
+    <meta property="og:description" content="리뷰 한 마디 남기고 가세요 !"/>
+    <meta property="og:image"
+          content="/static/logo.png"/>
     <link
             rel="shortcut icon"
-            href="{{ url_for('static', filename='favicon.ico') }}"
+            href="/static/logo.png"
             type="image/x-icon"
     />
     <link
@@ -68,9 +74,9 @@
     <h1 class="title">Cocktail Moa</h1>
     <div class="container" style="width: 60%">
         <div class="field is-horizontal">
-{#            <div class="field-label is-normal">#}
-{#                <label class="label" for="userid">ID</label>#}
-{#            </div>#}
+            {#            <div class="field-label is-normal">#}
+            {#                <label class="label" for="userid">ID</label>#}
+            {#            </div>#}
             <div class="field-body">
                 <div class="field">
                     <div class="control">
@@ -86,9 +92,9 @@
             </div>
         </div>
         <div class="field is-horizontal">
-{#            <div class="field-label is-normal">#}
-{#                <label class="label" for="userpw">PW</label>#}
-{#            </div>#}
+            {#            <div class="field-label is-normal">#}
+            {#                <label class="label" for="userpw">PW</label>#}
+            {#            </div>#}
             <div class="field-body">
                 <div class="field">
                     <div class="control">

@@ -3,8 +3,12 @@
 <head>
 
     <!-- Webpage Title -->
-    <title> 타이틀</title>
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Cocktail Moa</title>
+    <link
+            rel="shortcut icon"
+            href="/static/logo.png"
+            type="image/x-icon"
+    />
 
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
@@ -92,11 +96,11 @@
 
 </head>
 <body class="">
-    <div class="">
-        <a class="navbar-item" href="/">
-            <img src="{{ url_for('static', filename='logo.png') }}">
-        </a>
-    </div>
+<div class="">
+    <a class="navbar-item" href="/">
+        <img src="{{ url_for('static', filename='logo.png') }}">
+    </a>
+</div>
 <section class="hero is-white">
     <div class="hero-body" style="padding-bottom:1rem;margin:auto;min-width: 400px">
         <article class="media">
