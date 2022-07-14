@@ -39,8 +39,8 @@
         <div class="logo">
             <img src="../static/logo.png"/>
             <a href="/">
-        </div>
         </a>
+        </div>
         <div>
             <input
                     id="search"
@@ -52,10 +52,10 @@
         </div>
     </div>
     <div class="header__right">
-        <div class="myNickName">{{ nickname }}</div>
-        <span>님 환영합니다 !</span>  
+        <div class="myNickName"><a onclick="window.location.href='/user/{{ nickname }}'">{{ nickname }}</a></div>
+        <span>님 환영합니다 !</span>
         <button class="logout" onclick="logout()">로그아웃</button>
-      </div>  
+      </div>
 </header>
 <div class="sidebox">
     <button class="descending">오름차순</button>

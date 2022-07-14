@@ -21,13 +21,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <script>
+        function register() {
+            let id = $("#input-id").val()
+            let nick = $("#input-nick").val()
+            let pw = $("#input-pw").val()
+            let pw2 = $("#input-pw2").val()
+            console.log(id, pw, pw2, nick)
+ {#아이디 닉네임 비밀번호를 이렇게 저장하고싶다고 요청함#}
+
         function is_id(asValue) {
             var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
             return regExp.test(asValue);
         }
 
         function is_nick(asValue) {
-            var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+            var regExp = /^(?=.*[a-zA-Z가-힣])[-a-zA-Z0-9_.가-힣]{2,10}$/;
             return regExp.test(asValue);
         }
 
@@ -104,12 +112,7 @@
             });
         }
 
-        function register() {
-            let id = $("#input-id").val()
-            let nick = $("#input-nick").val()
-            let pw = $("#input-pw").val()
-            let pw2 = $("#input-pw2").val()
-            console.log(id, pw, pw2, nick)
+
 
 
             if ($("#help-id1").hasClass("is-danger")) {
@@ -149,6 +152,8 @@
             } else {
                 $("#help-pw2").text("비밀번호가 일치합니다.").removeClass("is-danger").addClass("is-success")
             }
+              {#이러한 제한 내용이 있고 제한내용에 해당하면 메세지를 보내고 아니면 다음 위치로 보낸다#}
+
             $.ajax({
                 type: "POST",
                 url: "/api/register",
@@ -167,6 +172,7 @@
                 }
             });
         }
+        {#제한내용을 통과한 정보를 서버에 저장해달라고 요청 한다#}
     </script>
 </head>
 <body>

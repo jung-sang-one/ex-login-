@@ -13,12 +13,15 @@
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
     <script>
+
+        {% if msg %}
+           alert("{{ msg }}")
+        {% endif %}
+
         function is_nick(asValue) {
             var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
             return regExp.test(asValue);
@@ -107,7 +110,7 @@
             <div class="media-content">
                 <div class="content">
                     <p>
-                        <strong>{{ user_info.nick }}</strong> <small>@{{ user_info.id }}</small>
+                        <strong>{{ nickname }}</strong> <small></small>
                         <br>
                     </p>
                 </div>
@@ -135,11 +138,11 @@
                     <article class="media">
                         <div class="media-content">
                             <div class="field">
-                                <label class="label" for="input-nikname">닉네임</label>
+                                <label class="label" for="input-nick">닉네임</label>
 
                                 <p class="control">
 
-                                    <input id="input-nikname" class="input"
+                                    <input id="input-nick" class="input"
                                            placeholder="홍길동">
                                 </p>
                             </div>
@@ -153,7 +156,7 @@
                                         <button class="button is-sparta" onclick="check_dup2()">중복확인</button>
                                     </div>
                                     <div class="level-item">
-                                        <a class="button is-sparta" onclick="update_nikname()">변경</a>
+                                        <a class="button is-sparta" onclick="update_nick()">변경</a>
                                     </div>
                                     <div class="level-item">
                                         <a class="button is-sparta is-outlined"
