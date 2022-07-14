@@ -27,7 +27,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 20%;
-  padding-right: 300px;
+  padding-right: 220px;
 }
 .search {
   width: 500px;
@@ -102,4 +102,16 @@ header {
 }
 .descending:hover {
   transform: scale(1.1);
+}
+
+.myNickName {
+  display: flex;
+}
+.logout {
+  margin-left: 5px;
+  background-color: rgba(227, 25, 74, 0.84);
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 25px;
 }
